@@ -38,7 +38,11 @@
   <% markers.each do |marker| %>
     var <%= "myLatlng#{marker.id}" %> = new google.maps.LatLng(<%= marker.latitude %>, <%= marker.longitude %>);
     
-        var <%= "content#{marker.id}" %> = '<%= escape_javascript(render "layouts/info_window/waiting_for_adopt") %>';
+      <% if marker.id%2 == 0  %>
+      var <%= "content#{marker.id}" %> = '<%= escape_javascript(render "layouts/info_window/waiting_for_adopt") %>';
+      <% else  %>
+      var <%= "content#{marker.id}" %> = '<%= escape_javascript(render "layouts/info_window/already_adopted") %>';
+      <% end  %>
 
       var <%= "marker#{marker.id}" %> = new google.maps.Marker({
         position: <%= "myLatlng#{marker.id}" %>,
