@@ -62,7 +62,7 @@
       ];
 
     var mapOptions = {
-      zoom: 13,
+      zoom: <%= zoom %>,
       zoomControl: true,
       center: new google.maps.LatLng(<%= center[:lat] %>, <%= center[:lng] %>),
       mapTypeId: google.maps.MapTypeId.ROADMAP,

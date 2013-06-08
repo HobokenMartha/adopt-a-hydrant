@@ -2,7 +2,7 @@
   .banner-container
     / = image_tag "banner.jpg"
     / = image_tag "#{static_map_image(@hydrant.latitude, @hydrant.longitude)}"
-    = render 'layouts/map', :height => '300px', :center => { :lat => @hydrant.latitude, :lng => @hydrant.longitude }, :markers => []
+    = render 'layouts/map', :height => '300px', :center => { :lat => @hydrant.latitude, :lng => @hydrant.longitude }, :markers => [], :zoom => 14
 
 %p
 .row-fluid
