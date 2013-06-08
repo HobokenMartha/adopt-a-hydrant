@@ -65,6 +65,8 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    gchart (1.0.0)
+      hoe (>= 2.3.2)
     geocoder (1.1.8)
     haml (4.0.2)
       tilt
@@ -77,6 +79,8 @@ GEM
       activerecord
     has_scope (0.5.1)
     hike (1.2.3)
+    hoe (3.6.2)
+      rake (>= 0.8, < 11.0)
     i18n (0.6.1)
     inherited_resources (1.4.0)
       has_scope (~> 0.5.0)
@@ -159,6 +163,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   debugger
   devise
+  gchart
   geocoder
   haml-rails
   has_defaults

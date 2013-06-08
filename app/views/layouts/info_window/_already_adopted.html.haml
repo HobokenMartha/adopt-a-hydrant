@@ -1,4 +1,4 @@
-.infowindow
+.infowindow{:style => "min-height: 300px;"}
   .row-fluid.text-center
     = image_tag "hydrant_avatar.jpg", class: "img-polaroid"
   
@@ -15,4 +15,4 @@
       
   
   .row-fluid.text-center
-    = link_to "Snowstorm coming? Let #{hydrant.user.full_name} know!", hydrant_path(hydrant), class: "btn btn-primary"
+    = link_to "Snowstorm? Let #{hydrant.user.full_name.split.first} know!", hydrant_path(hydrant), class: "bttn blue-bttn"

@@ -1,4 +1,6 @@
 Adoptahydrant::Application.routes.draw do
+  get "admin/index"
+
   get "dashboard/index"
 
   resources :hydrants

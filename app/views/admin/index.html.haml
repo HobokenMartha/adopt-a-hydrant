@@ -1,0 +1,96 @@
+.row-fluid{:style => "background-color: #fff; padding-right: 10px;"}
+  .span1
+    .panel-left-wrap.menu-item-active
+      .menu-item.text-center
+        %i.icon-align-right.icon-white
+      .menu-item.text-center.menu-item-active
+        %i.icon-ok-sign.icon-white
+      .menu-item.text-center
+        %i.icon-envelope.icon-white
+      .menu-item.text-center
+        %i.icon-calendar.icon-white
+      .menu-item.text-center
+        %i.icon-folder-open.icon-white
+  .span11
+    .row-fluid
+      .title-bar
+        %b.pull-right BOSTON'S FIRE DEPARTMENT
+        %b ADOPT-A-HYDRANT &sdot; ADMIN
+    
+    .row-fluid
+      .pull-right
+        %span.label.label-important + Checkins
+        %nbsp
+        %span.label.label-important + Statistics
+        %nbsp
+        %span.label.label-important + Donations
+        %nbsp
+        %span.label.label-important + Hydrant Query
+    %p 
+    %hr/ 
+    .row-fluid
+      .span2
+        .stats-number
+          Statistics
+        .help-block
+          last 30 days
+      .span2
+        .stats-number.pull-right
+          1,201
+        .clearfix
+        .stats-title.pull-right
+          New Hydts
+      .span2
+        .stats-number.pull-right
+          32,023
+        .clearfix
+        .stats-title.pull-right
+          Total Hydts
+      .span2
+        .stats-number.pull-right
+          6,920
+        .clearfix
+        .stats-title.pull-right
+          Checkins
+      .span2
+        .stats-number.pull-right
+          $52,342
+        .clearfix
+        .stats-title.pull-right
+          Donations
+      .span2
+        .stats-number.pull-right
+          102
+        .clearfix
+        .stats-title.pull-right
+          Engraved Hydts
+
+    .row-fluid
+      .hydrant-view.hydrant-view-active
+        .row-fluid
+          .span4
+            NAME / SID
+          .span6
+            LOCATION
+          .span2.text-right
+            .label.label-inverse
+              %i.icon-tag.icon-white
+
+      - @hydrants.each do |hydrant|
+        .hydrant-view
+          .row-fluid
+            .span3
+              %b= hydrant.name.empty? ? hydrant.sid : hydrant.name
+            .span7
+              %i.icon-map-marker 
+              = hydrant.location
+            .span2.text-right
+              - if hydrant.user.nil?
+                .label
+                  %i.icon-minus-sign.icon-white
+              - else
+                .label.label-warning
+                  %i.icon-ok-sign.icon-white
+    %p 
+    .row-fluid
+      %a.pull-right.bttn.red-bttn{:href => "#"} PRINT OUT

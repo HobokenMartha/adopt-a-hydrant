@@ -2,6 +2,7 @@
   <style>
   .infowindow {
     width: 300px;
+    min-height: 200px;
   }
   #map-canvas img {
     max-width: none
@@ -61,7 +62,7 @@
       ];
 
     var mapOptions = {
-      zoom: 10,
+      zoom: 13,
       zoomControl: true,
       center: new google.maps.LatLng(<%= center[:lat] %>, <%= center[:lng] %>),
       mapTypeId: google.maps.MapTypeId.ROADMAP,

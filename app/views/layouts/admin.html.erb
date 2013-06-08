@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Adopt-a-Hydrant</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= yield(:head) %>
+  <style>
+  .admin-container {
+    z-index: 0 !important;
+    /*margin-top: 50px !important;*/
+    background-color: $white;
+    border: 1px solid lighten($black, 85%);
+    border-top: none;
+    border-bottom: none;
+    margin: 0 auto;
+    padding: 0;
+    width: 960px;
+    min-height: 600px;
+  }
+  </style>
+</head>
+<body>
+  
+  <%= yield(:banner) %>
+  <div class="admin-container">
+    <%= yield %>
+    <div class="clearfix"></div>
+    <%= render "layouts/footer" %>  
+  </div>
+</body>
+</html>

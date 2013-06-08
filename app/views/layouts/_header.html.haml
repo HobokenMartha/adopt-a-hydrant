@@ -6,7 +6,7 @@
           = image_tag "logo.jpg"
       .span6.text-right
         - unless current_user
-          = link_to "Signup", new_user_registration_path, class: "btn btn-danger"
-          = link_to "Signin", new_user_session_path, class: "btn btn-primary"
+          = link_to "Signup", new_user_registration_path, class: "bttn red-bttn"
+          = link_to "Signin", new_user_session_path, class: "bttn blue-bttn"
         - else
-          = link_to "Signout", destroy_user_session_path, method: :delete, class: "btn"
+          = link_to "Signout", destroy_user_session_path, method: :delete, class: "bttn grey-bttn"

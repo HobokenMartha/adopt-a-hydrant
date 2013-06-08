@@ -17,6 +17,8 @@ gem 'has_defaults'
 gem 'activerecord-postgres-hstore'
 gem 'geocoder'
 
+gem "gchart"
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'

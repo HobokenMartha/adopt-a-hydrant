@@ -1,0 +1,141 @@
+$a_red: #D12029
+$a_grey: #999
+$white: #fff
+$blue: #0000FF
+
+.panel-left-wrap
+  width: 70px
+  min-height: 800px
+
+.menu-item
+  width: 50px
+  height: 17px
+  border-top: 1px solid darken($white, 30%)
+  padding: 10px
+  display: block
+  text-transform: uppercase
+  font-weight: bold
+  color: #000
+  text-shadow: 0.1em 0.1em darken(#fff, 20%)
+  background-image: -webkit-linear-gradient(bottom, $a_red 0%, darken($a_red, 15%) 100%)
+  background-image: -moz-linear-gradient(bottom, $a_red 0%, darken($a_red, 15%) 100%)
+  background-image: -ms-linear-gradient(bottom, $a_red 0%, darken($a_red, 15%) 100%)
+  background-image: -o-linear-gradient(bottom, $a_red 0%, darken($a_red, 15%) 100%)
+  background-image: linear-gradient(bottom, $a_red 0%, darken($a_red, 15%) 100%)
+  &:hover
+    @extend .menu-item-active
+    cursor: pointer
+
+.menu-item-active
+  background-image: -webkit-linear-gradient(bottom, $a_grey 0%, darken($a_grey, 15%) 100%) !important
+  background-image: -moz-linear-gradient(bottom, $a_grey 0%, darken($a_grey, 15%) 100%) !important
+  background-image: -ms-linear-gradient(bottom, $a_grey 0%, darken($a_grey, 15%) 100%) !important
+  background-image: -o-linear-gradient(bottom, $a_grey 0%, darken($a_grey, 15%) 100%) !important
+  background-image: linear-gradient(bottom, $a_grey 0%, darken($a_grey, 15%) 100%) !important
+
+.hydrant-view
+  padding: 0px 20px 0 20px
+  height: 50px
+  border: 1px solid lighten(#000, 80%)
+  width: 100%
+  max-width: 100%
+  box-sizing: border-box
+  line-height: 50px
+  border-bottom: none
+  background-image: -webkit-linear-gradient(bottom, $white 0%, darken($white, 8%) 100%)
+  background-image: -moz-linear-gradient(bottom, $white 0%, darken($white, 8%) 100%)
+  background-image: -ms-linear-gradient(bottom, $white 0%, darken($white, 8%) 100%)
+  background-image: -o-linear-gradient(bottom, $white 0%, darken($white, 8%) 100%)
+  background-image: linear-gradient(bottom, $white 0%, darken($a_red, 8%) 100%)
+  &:hover
+    background-color: $white !important
+    background-image: none
+    cursor: pointer
+  &:first-child
+    border-top-left-radius: 5px
+    border-top-right-radius: 5px
+  &:nth-last-child(1)
+    border-bottom: 1px solid lighten(#000, 80%)
+
+.hydrant-view-active
+  text-shadow: 0.1em 0.1em #000
+  background-image: -webkit-linear-gradient(bottom, darken($a_grey, 20%) 0%, lighten($a_grey, 10%) 100%)
+  background-image: -moz-linear-gradient(bottom, darken($a_grey, 20%) 0%, lighten($a_grey, 10%) 100%)
+  background-image: -ms-linear-gradient(bottom, darken($a_grey, 20%) 0%, lighten($a_grey, 10%) 100%)
+  background-image: -o-linear-gradient(bottom, darken($a_grey, 20%) 0%, lighten($a_grey, 10%) 100%)
+  background-image: linear-gradient(bottom, darken($a_grey, 20%) 0%, lighten($a_red, 10%) 100%)
+  color: $white
+  font-weight: bold
+
+.title-bar
+  border: 1px solid #fff
+  font-size: 17px
+  padding: 10px
+  height: 30px
+  color: $white
+  line-height: 30px
+  border-radius: 5px
+  margin: 10px auto 10px auto
+  text-shadow: 0.1em 0.1em #000
+  background-image: -webkit-linear-gradient(bottom, $a_red 0%, darken($a_red, 15%) 100%)
+  background-image: -moz-linear-gradient(bottom, $a_red 0%, darken($a_red, 15%) 100%)
+  background-image: -ms-linear-gradient(bottom, $a_red 0%, darken($a_red, 15%) 100%)
+  background-image: -o-linear-gradient(bottom, $a_red 0%, darken($a_red, 15%) 100%)
+  background-image: linear-gradient(bottom, $a_red 0%, darken($a_red, 15%) 100%)
+
+.stats
+  font-size: 20px
+  font-weight: bold
+.stats-number
+  font-size: 20px
+  font-weight: bold
+  color: #9C181E
+.stats-title
+  font-size: 13px
+  line-height: 20px
+  text-transform: uppercase
+  font-weight: normal
+  color: #595959
+
+.bttn
+  font-size: 14px
+  line-height: 20px
+  border-radius: 5px
+  padding: 12px 15px 12px 15px
+  font-weight: bold
+  margin-bottom: 10px
+  text-transform: uppercase
+  text-align: center
+  overflow: hidden
+
+.red-bttn
+  background-color: $a_red
+  color: $white
+  &:hover
+    color: darken($white, 5%)
+    background-color: lighten($a_red, 5%)
+    text-decoration: none
+
+.grey-bttn
+  background-color: darken(#F5F5F5, 10%)
+  color: lighten(#000, 10%)
+  &:hover
+    background-color: darken(#F5F5F5, 5%)
+    color: lighten(#000, 5%)
+    text-decoration: none
+
+.black-bttn
+  background-color: #000
+  color: #fff
+  &:hover
+    background-color: lighten(#000, 5%)
+    color: darken(#fff, 5%)
+    text-decoration: none
+
+.blue-bttn
+  background-color: $blue
+  color: #fff
+  &:hover
+    color: darken(#fff, 5%)
+    background-color: lighten($blue, 5%)
+    text-decoration: none

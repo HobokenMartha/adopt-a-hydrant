@@ -1,8 +1,9 @@
-.infowindow
+.infowindow{:style => "min-height: 140px;"}
   .row-fluid.text-center
     %p 
       %i.icon-map-marker
       Sanderstrasse 28 
     %h5 I'm not adopted and need your care :-)
-  .row-fluid
-    = link_to "Adopt", hydrant_path(hydrant), class: "btn btn-danger btn-large span12"
+    %hr/ 
+  .row-fluid.text-center
+    = link_to "Adopt", hydrant_path(hydrant), class: "bttn red-bttn"
