@@ -15,33 +15,12 @@ gem 'json'
 # Model gems
 gem 'has_defaults'
 gem 'activerecord-postgres-hstore'
+gem 'geocoder'
 
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'quiet_assets'
-end
-
-group :test, :development do
-  gem 'rspec-rails'
-  gem 'shoulda-matchers'
-  gem 'database_cleaner'
- 
-  gem "guard"
-  gem "guard-rspec"
-  gem 'cucumber-rails', :require => false
-  gem 'cucumber_factory'
-  gem 'guard-cucumber'
-  gem 'spreewald'
-  gem 'launchy'
-
-  gem "spork"
-  gem "guard-spork"
-  gem "factory_girl_rails"
-  gem "rb-fsevent"
-  gem 'capybara'
-  gem 'poltergeist'
-  gem 'selenium-webdriver'
 end
 
 # Gems used only for assets and not required

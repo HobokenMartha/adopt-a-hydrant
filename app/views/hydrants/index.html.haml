@@ -1,0 +1,29 @@
+%h1 Listing hydrants
+
+%table
+  %tr
+    %th Sid
+    %th Name
+    %th Location
+    %th Latitude
+    %th Longitude
+    %th User
+    %th
+    %th
+    %th
+
+  - @hydrants.each do |hydrant|
+    %tr
+      %td= hydrant.sid
+      %td= hydrant.name
+      %td= hydrant.location
+      %td= hydrant.latitude
+      %td= hydrant.longitude
+      %td= hydrant.user_id
+      %td= link_to 'Show', hydrant
+      %td= link_to 'Edit', edit_hydrant_path(hydrant)
+      %td= link_to 'Destroy', hydrant, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Hydrant', new_hydrant_path

@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Sid:
+  = @hydrant.sid
+%p
+  %b Name:
+  = @hydrant.name
+%p
+  %b Location:
+  = @hydrant.location
+%p
+  %b Latitude:
+  = @hydrant.latitude
+%p
+  %b Longitude:
+  = @hydrant.longitude
+%p
+  %b User:
+  = @hydrant.user_id
+
+= link_to 'Edit', edit_hydrant_path(@hydrant)
+\|
+= link_to 'Back', hydrants_path

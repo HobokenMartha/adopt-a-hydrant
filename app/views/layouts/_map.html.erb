@@ -1,0 +1,100 @@
+<%= content_for :head do %>
+  <style>
+  .infowindow {
+    width: 350px;
+  }
+  #map-canvas img {
+    max-width: none
+  };
+  </style>
+  <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+  <script type="text/javascript">
+  function initialize() {
+
+    var mapOptions = {
+      zoom: 10,
+      zoomControl: true,
+      center: new google.maps.LatLng(<%= center[:lat] %>, <%= center[:lng] %>),
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      disableDefaultUI: true,
+      zoomControlOptions: {
+        style: google.maps.ZoomControlStyle.LARGE,
+        position: google.maps.ControlPosition.LEFT_CENTER
+      }
+    };
+
+    var map = new google.maps.Map(document.getElementById("map-canvas"),
+      mapOptions);
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var myLatlng = new google.maps.LatLng(<%= center[:lat] %>, <%= center[:lng] %>);
+
+    var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      icon: '<%= image_path("map/green_school.jpg") %>',
+    });
+
+  <% markers.each do |marker| %>
+    var <%= "myLatlng#{marker.id}" %> = new google.maps.LatLng(<%= marker.latitude %>, <%= marker.longitude %>);
+    
+    <% if marker.status == "AVAILABLE"  %>
+      <% if marker.donations.empty? %>
+        var <%= "content#{marker.id}" %> = '<div class=\"infowindow\">'+
+      '<%= escape_javascript(render "dashboard/school_information", :school => marker) %><br/>'+
+      '<p class=\"pull-right\"><%= escape_javascript(link_to "Select", dashboard_select_school_path(:school_id => marker.id), class: "submitSchool bttn", :onclick => '$(".submitSchool").hide().parent().append("SELECTED");', remote: :true) %></p></div>';
+
+      var <%= "marker#{marker.id}" %> = new google.maps.Marker({
+        position: <%= "myLatlng#{marker.id}" %>,
+        map: map,
+        icon: '<%= image_path("map/green_school.jpg") %>'
+      });
+      <% else  %>
+        var <%= "content#{marker.id}" %> = '<div class=\"infowindow\">'+
+          '<%= escape_javascript(render "dashboard/school_information", :school => marker) %><br/>Some heros are proceeding with the checkout.</div>';
+
+          var <%= "marker#{marker.id}" %> = new google.maps.Marker({
+            position: <%= "myLatlng#{marker.id}" %>,
+            map: map,
+            icon: '<%= image_path("map/yellow_school.jpg") %>'
+          });      
+      <% end  %>
+    <% else %>
+      <% if marker.status == "PENDING"  %>
+        var <%= "content#{marker.id}" %> = '<div class=\"infowindow\">'+
+          '<%= escape_javascript(render "dashboard/school_information", :school => marker) %><br/>You marked this school as pending.</div>';
+
+          var <%= "marker#{marker.id}" %> = new google.maps.Marker({
+            position: <%= "myLatlng#{marker.id}" %>,
+            map: map,
+            icon: '<%= image_path("map/yellow_school.jpg") %>'
+          });
+      <% else %>
+        var <%= "content#{marker.id}" %> = '<div class=\"infowindow\">'+
+          '<%= escape_javascript(render "dashboard/school_information", :school => marker) %></div>';
+
+          var <%= "marker#{marker.id}" %> = new google.maps.Marker({
+            position: <%= "myLatlng#{marker.id}" %>,
+            map: map,
+            icon: '<%= image_path("map/red_school.jpg") %>'
+          });
+      <% end  %>
+    <% end  %>
+
+
+    google.maps.event.addListener(<%= "marker#{marker.id}" %>, 'click', function() {
+      infowindow.close();
+      infowindow.setContent(<%= "content#{marker.id}" %>);
+      infowindow.open(map,<%= "marker#{marker.id}" %>);
+      // map.setCenter(<%= "myLatlng#{marker.id}" %>);
+    });
+  <% end %>
+
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
+<% end  %>
+
+<div id="map-canvas" style="width: 100%; height: <%= height %>;"></div>
+

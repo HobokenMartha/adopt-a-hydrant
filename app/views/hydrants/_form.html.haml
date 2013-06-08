@@ -1,0 +1,28 @@
+= form_for @hydrant do |f|
+  - if @hydrant.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@hydrant.errors.count, "error")} prohibited this hydrant from being saved:"
+      %ul
+        - @hydrant.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :sid
+    = f.text_field :sid
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :location
+    = f.text_field :location
+  .field
+    = f.label :latitude
+    = f.text_field :latitude
+  .field
+    = f.label :longitude
+    = f.text_field :longitude
+  .field
+    = f.label :user_id
+    = f.text_field :user_id
+  .actions
+    = f.submit 'Save'
