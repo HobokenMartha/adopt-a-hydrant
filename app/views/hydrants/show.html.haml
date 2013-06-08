@@ -1,3 +1,39 @@
+.row-fluid
+  / BIG SPAN4
+  .span3
+    = image_tag "hydrant_avatar.jpg", class: "img-polaroid"
+    %p 
+      %i.icon-map-marker
+      Sanderstrasse 28 
+    .clearfix
+    %a.btn.btn-success 105 kudos
+    %a.btn.btn-warning{:href => "#"} Support Jenny's work
+    .help-block Buy Jenny a toolkit ($25)
+  / END: BIG SPAN4
+
+  / BIG SPAN6
+  .span9
+    Profile
+    .well.well-small
+      <b>Nokogiri</b> has been adopted by <b>Jenny Chuwatsky</b> on <b>Jan 2013</b>.
+
+    %hr/ 
+    .well.well-small
+      %i.icon-ok-sign
+      <b>Fire Department of Boston</b> has checked and accreddited Jenny for adopting this hydrant.
+      .help-block.pull-right Jan 2013
+
+    %hr/ 
+    .well.well-small
+      %i.icon-screenshot 
+      <b>Jenny</b> has checked in <b>Nokogiri</b> for the <b>third time</b> 
+      %br/ 
+      - 3.times do
+        = image_tag "hydrant_avatar.jpg", class: "img-polaroid"
+      .help-block.pull-right #{Time.now}
+  / END: BIG SPAN6
+
+%hr/ 
 %p#notice= notice
 
 %p
