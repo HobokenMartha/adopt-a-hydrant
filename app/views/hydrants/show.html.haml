@@ -10,80 +10,87 @@
       = image_tag "hydrant_avatar.jpg", class: "img-polaroid"
     .row-fluid.text-center
       %p 
-        %b= @hydrant.name
+        %b= @hydrant.name.empty? ? @hydrant.sid : @hydrant.name
         %br/ 
         %i.icon-map-marker
         = @hydrant.location
-    .row-fluid{:style => "margin-bottom: 10px !important;"}
-      %p
-        %a.btn.btn-success.span12 105 kudos
-    .row-fluid.text-center
-      %p 
-        %a.btn.btn-warning.btn-large.span12{:href => "#"} Support Jenny's work
-        .help-block
-          Buy Jenny a toolkit ($25).
-          %br/ 
-          Online payment by Paypal.
+    - unless @hydrant.user.nil?
+      .row-fluid{:style => "margin-bottom: 10px !important;"}
+        %p
+          %a.btn.btn-success.span12 105 kudos
+      .row-fluid.text-center
+        %p 
+          %a.btn.btn-warning.btn-large.span12{:href => "#"} Support Jenny's work
+          .help-block
+            Buy Jenny a toolkit ($25).
+            %br/ 
+            Online payment by Paypal.
+    - else
+      .row-fluid{:style => "margin-bottom: 10px !important;"}
+        %p
+          %a.btn.btn-danger.span12 Adopt this hydrant
+    
+    - if current_user && !@hydrant.user.nil? && @hydrant.user == current_user
+      %hr/ 
+      .row-fluid.text-center{:style => "margin-bottom: 10px !important;"}
+        %b Management
 
-    %hr/ 
-    .row-fluid.text-center{:style => "margin-bottom: 10px !important;"}
-      %b Management
+      .row-fluid{:style => "margin-bottom: 10px !important;"}
+        %a.btn.span12{:href => "#"}
+          %i.icon-map-marker
+          Checkin
+      .row-fluid{:style => "margin-bottom: 10px !important;"}
+        %a.btn.span12{:href => "#"}
+          %i.icon-remove
+          Abandon
 
-    .row-fluid{:style => "margin-bottom: 10px !important;"}
-      %a.btn.span12{:href => "#"}
-        %i.icon-map-marker
-        Checkin
-    .row-fluid{:style => "margin-bottom: 10px !important;"}
-      %a.btn.span12{:href => "#"}
-        %i.icon-remove
-        Abandon
+      %hr/ 
+      .row-fluid.text-center{:style => "margin-bottom: 10px !important;"}
+        %b City Fire Department
 
-    %hr/ 
-    .row-fluid.text-center{:style => "margin-bottom: 10px !important;"}
-      %b City Fire Department
-
-    .row-fluid{:style => "margin-bottom: 10px !important;"}
-      %a.btn.btn-inverse.span12{:href => "#"}
-        %i.icon-thumbs-up.icon-white
-        Verify Adoption
+      .row-fluid{:style => "margin-bottom: 10px !important;"}
+        %a.btn.btn-inverse.span12{:href => "#"}
+          %i.icon-thumbs-up.icon-white
+          Verify Adoption
   / END: BIG SPAN4
   
-  / BIG SPAN6
-  .span9
-    .row-fluid
-      %h3 Milestones
-      .well.well-small
-        .hyper-small.help-block.pull-right #{time_friendly(@hydrant.adopted_on)}
-        %i.icon-heart
-        <b>#{@hydrant.name}</b> has been adopted by <b>#{@hydrant.user.full_name}</b>
+  - unless @hydrant.user.nil?
+    / BIG SPAN6
+    .span9
+      .row-fluid
+        %h3 Milestones
+        .well.well-small
+          .hyper-small.help-block.pull-right #{time_friendly(@hydrant.adopted_on)}
+          %i.icon-heart
+          <b>#{@hydrant.name}</b> has been adopted by <b>#{@hydrant.user.full_name}</b>
 
-      .well.well-small
-        .hyper-small.help-block.pull-right= time_friendly(3.days.ago)
-        %i.icon-ok-sign
-        <b>Fire Department of Boston</b> has checked and accreddited Jenny for adopting this hydrant.
-    
-    .row-fluid.checkin
-      .hyper-small.help-block.pull-right #{time_friendly(Time.now)}
-      .status
-        %i.icon-screenshot 
-        <b>Jenny</b> has checked in <b>#{@hydrant.name}</b> for the <b>third time</b> 
-      - (3..5).each do |i|
-        = image_tag "batch/hydrant_#{i}.jpg", class: "img-polaroid", size: "75x75"
-
-    .row-fluid.checkin
-      .hyper-small.help-block.pull-right #{time_friendly(Time.now)}
-      .status
-        %i.icon-screenshot 
-        Bright and shine. <b>#{@hydrant.name}</b> was checked in for the <b>second</b>  time
-      - (2..3).each do |i|
-        = image_tag "batch/hydrant_#{i}.jpg", class: "img-polaroid", size: "75x75"
-
-    .row-fluid.checkin
-      .hyper-small.help-block.pull-right #{time_friendly(Time.now)}
-      .status
-        %i.icon-screenshot 
-        Hooray! <b>#{@hydrant.user.full_name}</b> checked in <b>#{@hydrant.name}</b> for the <b>first time</b> 
-      - (1..1).each do |i|
-        = image_tag "batch/hydrant_#{i}.jpg", class: "img-polaroid", size: "75x75"
+        .well.well-small
+          .hyper-small.help-block.pull-right= time_friendly(3.days.ago)
+          %i.icon-ok-sign
+          <b>Fire Department of Boston</b> has checked and accreddited Jenny for adopting this hydrant.
       
-  / END: BIG SPAN6
+      .row-fluid.checkin
+        .hyper-small.help-block.pull-right #{time_friendly(Time.now)}
+        .status
+          %i.icon-screenshot 
+          <b>Jenny</b> has checked in <b>#{@hydrant.name}</b> for the <b>third time</b> 
+        - (3..5).each do |i|
+          = image_tag "batch/hydrant_#{i}.jpg", class: "img-polaroid", size: "75x75"
+
+      .row-fluid.checkin
+        .hyper-small.help-block.pull-right #{time_friendly(Time.now)}
+        .status
+          %i.icon-screenshot 
+          Bright and shine. <b>#{@hydrant.name}</b> was checked in for the <b>second</b>  time
+        - (2..3).each do |i|
+          = image_tag "batch/hydrant_#{i}.jpg", class: "img-polaroid", size: "75x75"
+
+      .row-fluid.checkin
+        .hyper-small.help-block.pull-right #{time_friendly(Time.now)}
+        .status
+          %i.icon-screenshot 
+          Hooray! <b>#{@hydrant.user.full_name}</b> checked in <b>#{@hydrant.name}</b> for the <b>first time</b> 
+        - (1..1).each do |i|
+          = image_tag "batch/hydrant_#{i}.jpg", class: "img-polaroid", size: "75x75"
+        
+    / END: BIG SPAN6

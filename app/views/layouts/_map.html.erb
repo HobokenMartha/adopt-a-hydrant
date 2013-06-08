@@ -88,7 +88,7 @@
   <% markers.each do |marker| %>
     var <%= "myLatlng#{marker.id}" %> = new google.maps.LatLng(<%= marker.latitude %>, <%= marker.longitude %>);
     
-      <% if marker.id%2 == 0  %>
+      <% if marker.user.nil?  %>
         var <%= "content#{marker.id}" %> = '<%= escape_javascript(render "layouts/info_window/waiting_for_adopt", :hydrant => marker) %>';
 
         var <%= "marker#{marker.id}" %> = new google.maps.Marker({

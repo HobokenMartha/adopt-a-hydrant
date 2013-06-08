@@ -10,7 +10,7 @@
 
   .row-fluid.text-center
     .well.well-small
-      <b>#{hydrant.name}</b> has been adopted by <b>#{hydrant.user.full_name}</b> since <b>#{time_friendly(hydrant.adopted_on)}</b>
+      <b>#{hydrant.name.empty? ? hydrant.sid : hydrant.name }</b> has been adopted by <b>#{hydrant.user.full_name}</b> since <b>#{time_friendly(hydrant.adopted_on)}</b>
     %hr/ 
       
   
