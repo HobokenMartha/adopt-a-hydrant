@@ -1,0 +1,22 @@
+defaults: &defaults
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: localhost
+  user: admin
+  password: password
+
+development:
+  <<: *defaults
+  database: adopt_a_hydrant_dev
+
+test: &test
+  <<: *defaults
+  database: adopt_a_hydrant_test
+
+production:
+  <<: *defaults
+  database: adopt_a_hydrant_prod
+
+cucumber:
+  <<: *test
