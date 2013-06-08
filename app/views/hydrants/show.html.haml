@@ -24,6 +24,28 @@
           Buy Jenny a toolkit ($25).
           %br/ 
           Online payment by Paypal.
+
+    %hr/ 
+    .row-fluid.text-center{:style => "margin-bottom: 10px !important;"}
+      %b Management
+
+    .row-fluid{:style => "margin-bottom: 10px !important;"}
+      %a.btn.span12{:href => "#"}
+        %i.icon-map-marker
+        Checkin
+    .row-fluid{:style => "margin-bottom: 10px !important;"}
+      %a.btn.span12{:href => "#"}
+        %i.icon-remove
+        Abandon
+
+    %hr/ 
+    .row-fluid.text-center{:style => "margin-bottom: 10px !important;"}
+      %b City Fire Department
+
+    .row-fluid{:style => "margin-bottom: 10px !important;"}
+      %a.btn.btn-inverse.span12{:href => "#"}
+        %i.icon-thumbs-up.icon-white
+        Verify Adoption
   / END: BIG SPAN4
   
   / BIG SPAN6
@@ -40,29 +62,28 @@
         %i.icon-ok-sign
         <b>Fire Department of Boston</b> has checked and accreddited Jenny for adopting this hydrant.
     
-    %hr/ 
-    .well.well-small
+    .row-fluid.checkin
       .hyper-small.help-block.pull-right #{time_friendly(Time.now)}
       .status
         %i.icon-screenshot 
         <b>Jenny</b> has checked in <b>#{@hydrant.name}</b> for the <b>third time</b> 
-      - (1..2).each do |i|
+      - (3..5).each do |i|
         = image_tag "batch/hydrant_#{i}.jpg", class: "img-polaroid", size: "75x75"
 
-    .well.well-small
+    .row-fluid.checkin
       .hyper-small.help-block.pull-right #{time_friendly(Time.now)}
       .status
         %i.icon-screenshot 
         Bright and shine. <b>#{@hydrant.name}</b> was checked in for the <b>second</b>  time
-      - (3..3).each do |i|
+      - (2..3).each do |i|
         = image_tag "batch/hydrant_#{i}.jpg", class: "img-polaroid", size: "75x75"
 
-    .well.well-small
+    .row-fluid.checkin
       .hyper-small.help-block.pull-right #{time_friendly(Time.now)}
       .status
         %i.icon-screenshot 
         Hooray! <b>#{@hydrant.user.full_name}</b> checked in <b>#{@hydrant.name}</b> for the <b>first time</b> 
-      - (3..5).each do |i|
+      - (1..1).each do |i|
         = image_tag "batch/hydrant_#{i}.jpg", class: "img-polaroid", size: "75x75"
       
   / END: BIG SPAN6
