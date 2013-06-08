@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: hydrants
+#
+#  id         :integer          not null, primary key
+#  sid        :string(255)
+#  name       :string(255)
+#  location   :string(255)
+#  latitude   :float
+#  longitude  :float
+#  user_id    :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Hydrant < ActiveRecord::Base
   attr_accessible :latitude, :location, :longitude, :name, :sid, :user_id
 

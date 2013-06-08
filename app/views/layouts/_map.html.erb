@@ -89,7 +89,7 @@
     var <%= "myLatlng#{marker.id}" %> = new google.maps.LatLng(<%= marker.latitude %>, <%= marker.longitude %>);
     
       <% if marker.id%2 == 0  %>
-        var <%= "content#{marker.id}" %> = '<%= escape_javascript(render "layouts/info_window/waiting_for_adopt") %>';
+        var <%= "content#{marker.id}" %> = '<%= escape_javascript(render "layouts/info_window/waiting_for_adopt", :hydrant => marker) %>';
 
         var <%= "marker#{marker.id}" %> = new google.maps.Marker({
           position: <%= "myLatlng#{marker.id}" %>,
@@ -98,7 +98,7 @@
         });
 
       <% else  %>
-        var <%= "content#{marker.id}" %> = '<%= escape_javascript(render "layouts/info_window/already_adopted") %>';
+        var <%= "content#{marker.id}" %> = '<%= escape_javascript(render "layouts/info_window/already_adopted", :hydrant => marker) %>';
 
         var <%= "marker#{marker.id}" %> = new google.maps.Marker({
           position: <%= "myLatlng#{marker.id}" %>,
