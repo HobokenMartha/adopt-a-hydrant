@@ -11,10 +11,14 @@
   <%= render "layouts/header" %>
   <div class="body-container">
     <% if notice || alert  %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>  
+      <div class="row-fluid">
+        <p><%= notice %></p>
+        <p><%= alert %></p>  
+      </div>
+      <hr>
     <% end %>
     <%= yield %>
+    <%= render "layouts/footer" %>
   </div>
   
 

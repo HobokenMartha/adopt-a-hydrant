@@ -1,10 +1,8 @@
 .infowindow
-  .row-fluid
+  .row-fluid.text-center
     %p 
       %i.icon-map-marker
       Sanderstrasse 28 
-
+    %h5 I'm not adopted and need your care :-)
   .row-fluid
-    %p
-      %h5 I'm not adopted and need your care :-)
-      = link_to "Adopt", hydrant_path(hydrant), class: "pull-right btn btn-info"
+    = link_to "Adopt", hydrant_path(hydrant), class: "btn btn-danger btn-large span12"

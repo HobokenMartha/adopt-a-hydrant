@@ -24,50 +24,40 @@
   / BIG SPAN6
   .span9
     .row-fluid
-    Profile
-    .well.well-small
-      .help-block.pull-right #{time_friendly(@hydrant.adopted_on)}
-      <b>#{@hydrant.name}</b> has been adopted by <b>#{@hydrant.user.full_name}</b> on <b></b>.
+      %h3 Milestones
+      .well.well-small
+        .hyper-small.help-block.pull-right #{time_friendly(@hydrant.adopted_on)}
+        %i.icon-heart
+        <b>#{@hydrant.name}</b> has been adopted by <b>#{@hydrant.user.full_name}</b>
 
-    %hr/ 
-    .well.well-small
-      .help-block.pull-right Jan 2013
-      %i.icon-ok-sign
-      <b>Fire Department of Boston</b> has checked and accreddited Jenny for adopting this hydrant.
+      .well.well-small
+        .hyper-small.help-block.pull-right= time_friendly(3.days.ago)
+        %i.icon-ok-sign
+        <b>Fire Department of Boston</b> has checked and accreddited Jenny for adopting this hydrant.
     
     %hr/ 
     .well.well-small
-      .help-block.pull-right #{time_friendly(Time.now)}
-      %i.icon-screenshot 
-      <b>Jenny</b> has checked in <b>Nokogiri</b> for the <b>third time</b> 
-      %br/ 
-      - 3.times do
-        = image_tag "hydrant_avatar.jpg", class: "img-polaroid"
+      .hyper-small.help-block.pull-right #{time_friendly(Time.now)}
+      .status
+        %i.icon-screenshot 
+        <b>Jenny</b> has checked in <b>#{@hydrant.name}</b> for the <b>third time</b> 
+      - (1..2).each do |i|
+        = image_tag "batch/hydrant_#{i}.jpg", class: "img-polaroid", size: "75x75"
+
+    .well.well-small
+      .hyper-small.help-block.pull-right #{time_friendly(Time.now)}
+      .status
+        %i.icon-screenshot 
+        Bright and shine. <b>#{@hydrant.name}</b> was checked in for the <b>second</b>  time
+      - (3..3).each do |i|
+        = image_tag "batch/hydrant_#{i}.jpg", class: "img-polaroid", size: "75x75"
+
+    .well.well-small
+      .hyper-small.help-block.pull-right #{time_friendly(Time.now)}
+      .status
+        %i.icon-screenshot 
+        Hooray! <b>#{@hydrant.user.full_name}</b> checked in <b>#{@hydrant.name}</b> for the <b>first time</b> 
+      - (3..5).each do |i|
+        = image_tag "batch/hydrant_#{i}.jpg", class: "img-polaroid", size: "75x75"
       
   / END: BIG SPAN6
-
-%hr/ 
-%p#notice= notice
-
-%p
-  %b Sid:
-  = @hydrant.sid
-%p
-  %b Name:
-  = @hydrant.name
-%p
-  %b Location:
-  = @hydrant.location
-%p
-  %b Latitude:
-  = @hydrant.latitude
-%p
-  %b Longitude:
-  = @hydrant.longitude
-%p
-  %b User:
-  = @hydrant.user_id
-
-= link_to 'Edit', edit_hydrant_path(@hydrant)
-\|
-= link_to 'Back', hydrants_path

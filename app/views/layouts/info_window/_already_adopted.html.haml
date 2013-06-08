@@ -1,14 +1,18 @@
 .infowindow
-  .row-fluid
-    = image_tag "hydrant_avatar.jpg", class: "img-polaroid pull-left"
-    <b>Nokogiri</b> has been adopted by <b>Jenny Swowasski</b> since <b>Jan 2013</b>
-
-  .row-fluid
+  .row-fluid.text-center
+    = image_tag "hydrant_avatar.jpg", class: "img-polaroid"
+  
+  .row-fluid.text-center
     %i.icon-map-marker
-    Sanderstrasse 28 
+    = hydrant.location
     %br/ 
-    Last checking: #{Time.now}
+    .hyper-small Last checking: #{time_friendly(Time.now)}
 
-  .row-fluid
-    %p 
-      = link_to "Snowstorm? Let Jenny know!", hydrant_path(hydrant), class: "pull-right btn btn-warning"
+  .row-fluid.text-center
+    .well.well-small
+      <b>#{hydrant.name}</b> has been adopted by <b>#{hydrant.user.full_name}</b> since <b>#{time_friendly(hydrant.adopted_on)}</b>
+    %hr/ 
+      
+  
+  .row-fluid.text-center
+    = link_to "Snowstorm coming? Let #{hydrant.user.full_name} know!", hydrant_path(hydrant), class: "btn btn-primary"
