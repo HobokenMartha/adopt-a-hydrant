@@ -1,8 +1,10 @@
 = content_for(:banner) do
   .banner-container
-    = image_tag "banner.jpg"  
+    / = image_tag "banner.jpg"
+    / = image_tag "#{static_map_image(@hydrant.latitude, @hydrant.longitude)}"
+    = render 'layouts/map', :height => '300px', :center => { :lat => @hydrant.latitude, :lng => @hydrant.longitude }, :markers => []
 
-%p 
+%p
 .row-fluid
   / BIG SPAN4
   .span3{:style => "padding-right: 15px; padding-left: 15px; box-sizing: border-box;"}

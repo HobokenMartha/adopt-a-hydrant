@@ -1,1 +1,21 @@
-= render 'layouts/map', :height => '800px', :center => { :lat => @center.latitude, :lng => @center.longitude }, :markers => @markers
+.banner-container
+  = image_tag "banner.jpg"  
+.body-container
+  .big-intro.text-center
+    In the midst of winter snowstorms, buried hydrants cause dangerous delays in responding to fire emergencies. Adopt-a-Hydrant lets governments turn to the community for helps.
+  %hr/
+  .row-fluid
+    .span4.text-center
+      = image_tag "hp/map.jpg", class: "img-circle"
+    .span8
+      %h3 Map View
+      %p Intuitive something something
+
+  .row-fluid{:style => "margin-bottom: 20px;"}
+    .span4.offset4.text-center
+      = link_to "ADOPT-A-HYDRANT MAP", pages_map_path, class: "bttn black-bttn"
+  .row-fluid
+    .span6.text-right
+      = link_to "Signup", new_user_registration_path, class: "bttn red-bttn"
+    .span6
+      = link_to "Signin", new_user_session_path, class: "bttn red-bttn"
