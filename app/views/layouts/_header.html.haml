@@ -2,7 +2,8 @@
   .content-area
     .row-fluid
       .span6
-        = link_to "ROOT", root_path
+        = link_to root_path do
+          = image_tag "logo.jpg"
       .span6.text-right
         - unless current_user
           = link_to "Signup", new_user_registration_path, class: "btn btn-danger"
