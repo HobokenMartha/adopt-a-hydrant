@@ -4,25 +4,46 @@
   .big-intro.text-center
     In the midst of winter snowstorms, buried hydrants cause dangerous delays in responding to fire emergencies. Adopt-a-Hydrant lets governments turn to the community for helps.
   %hr/
-  .row-fluid{:style => "border-bottom: 1px solid #ccc;"}
+  .row-fluid{:style => "border-bottom: 1px solid #eee;"}
     .span8.text-center
       = image_tag "hp/hydrant_page.png"
     .span4
-      %h3 Map View
-      %p Intuitive something something
-  .row-fluid{:style => "border-bottom: 1px solid #ccc;"}
+      %p 
+      .big-intro All about the hydrant
+      <br/><br/>
+      %p 
+        %i.icon-ok-sign
+        People can give kudos to adopters.<br/><br/>
+        %i.icon-ok-sign
+        People can support adopters financially using the "Support his/her work" feature.<br/><br/>
+        %i.icon-ok-sign
+        Payment made via Paypal. <br/><br/>
+        %i.icon-ok-sign
+        People can checkin to hydrants and let others know they are all fine in the winter.<br/><br/>
+        %i.icon-ok-sign
+        People can abandon hydrants if they move out to other places.
+  .row-fluid{:style => "margin-top: 30px; border-bottom: 1px solid #eee;"}
     .span4
-      %h3 Map View
-      %p Intuitive something something
+      .big-intro State management made easy
+      <br/><br/>
+      %p 
+        %i.icon-ok-sign
+        Admin can verify one's adoption<br/><br/>
+        %i.icon-ok-sign
+        Admin can checkin to see new adoptions and make necessary followups<br/><br/>
+        %i.icon-ok-sign
+        One-click notification (SMS, email) to adoptors when there is emergency (snowstorm) coming<br/><br/>
+        %i.icon-ok-sign
+        Easy monitor on adoption progress<br/><br/>
+        %i.icon-ok-sign
+        Admin can print out leaflets encouraging people to adopt unchecked hydrants
     .span8.text-center
       = image_tag "hp/admin_page.png"
 
-  %hr/ 
+  .row-fluid{:style => "margin-bottom: 40px; margin-top: 20px;"}
+    .big-intro.text-center Interested? <br/> Browse our hydrant map and sign up to adopt one!
   .row-fluid{:style => "margin-bottom: 20px;"}
     .span4.offset4.text-center
-      = link_to "ADOPT-A-HYDRANT MAP", pages_map_path, class: "bttn black-bttn"
-  .row-fluid
-    .span6.text-right
-      = link_to "Signup", new_user_registration_path, class: "bttn red-bttn"
-    .span6
-      = link_to "Signin", new_user_session_path, class: "bttn red-bttn"
+      = link_to "ADOPT-A-HYDRANT MAP", pages_map_path, class: "bttn red-bttn"
+
+  = render "layouts/footer"
