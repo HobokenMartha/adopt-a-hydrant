@@ -2,10 +2,10 @@
   .banner-container
     = image_tag "banner.jpg"  
 
-%hr/ 
+%p 
 .row-fluid
   / BIG SPAN4
-  .span3
+  .span3{:style => "padding-right: 15px; padding-left: 15px; box-sizing: border-box;"}
     .row-fluid.text-center
       = image_tag "hydrant_avatar.jpg", class: "img-polaroid"
     .row-fluid.text-center
@@ -47,7 +47,7 @@
     - if current_user && !@hydrant.user.nil? && @hydrant.user == current_user
       %hr/ 
       .row-fluid.text-center{:style => "margin-bottom: 10px !important;"}
-        %b Management
+        %b MANAGEMENT
 
       .row-fluid{:style => "margin-bottom: 10px !important;"}
         %a.bttn.grey-bttn.span12{:href => "#"}
@@ -60,7 +60,7 @@
 
       %hr/ 
       .row-fluid.text-center{:style => "margin-bottom: 10px !important;"}
-        %b City Fire Department
+        %b CITY FIRE DEPARTMENT
 
       .row-fluid{:style => "margin-bottom: 10px !important;"}
         %a.bttn.black-bttn.span12{:href => "#"}
@@ -73,19 +73,20 @@
     .span9
       .row-fluid
         %h3 Milestones
-        .well.well-small
+        .milestone-wrap
           .hyper-small.help-block.pull-right #{time_friendly(@hydrant.adopted_on)}
           .milestone
             %i.icon-heart
             <b>#{@hydrant.name}</b> has been adopted by <b>#{@hydrant.user.full_name}</b>
 
-        .well.well-small
+        .milestone-wrap
           .hyper-small.help-block.pull-right= time_friendly(3.days.ago)
           .milestone
             %i.icon-ok-sign
             <b>Boston's City Fire Department</b> checked & authorized #{@hydrant.user.full_name} for adopting this hydrant
       
       .row-fluid.checkin
+        %h3 Checkins
         .hyper-small.help-block.pull-right #{time_friendly(Time.now)}
         .status
           %i.icon-screenshot 
@@ -97,7 +98,7 @@
         .hyper-small.help-block.pull-right #{time_friendly(Time.now)}
         .status
           %i.icon-screenshot 
-          Bright and shine. <b>#{@hydrant.name}</b> was checked in for the <b>second</b>  time
+          Bright and shine. <b>#{@hydrant.name}</b> was checked in for the <b>second time</b>
         - (2..3).each do |i|
           = image_tag "batch/hydrant_#{i}.jpg", class: "img-polaroid", size: "75x75"
 
