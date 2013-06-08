@@ -1,11 +1,14 @@
-.row-fluid
-  Nokogiri has been adopted by Jenny
-  %i.icon-map-marker
-  Last checking: Time.now
+.infowindow
+  .row-fluid
+    = image_tag "hydrant_avatar.jpg", class: "img-polaroid pull-left"
+    <b>Nokogiri</b> has been adopted by <b>Jenny Swowasski</b> since <b>Jan 2013</b>
 
-.row-fluid
-  %i.icon-map-marker
-  Sanderstrasse 28 
+  .row-fluid
+    %i.icon-map-marker
+    Sanderstrasse 28 
+    %br/ 
+    Last checking: #{Time.now}
 
-.row-fluid
-  %a.btn.btn-warning{:href => "#"} Snowstorm? Let Jenny know!
+  .row-fluid
+    %p 
+      %a.pull-right.btn.btn-warning{:href => "#"} Snowstorm? Let Jenny know!
