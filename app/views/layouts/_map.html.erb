@@ -9,7 +9,56 @@
   </style>
   <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
   <script type="text/javascript">
+
   function initialize() {
+    var styleCharityMap = [
+        {
+          "featureType": "transit",
+          "elementType": "geometry",
+          "stylers": [
+            { "visibility": "off" }
+          ]
+        },{
+          "featureType": "poi",
+          "stylers": [
+            { "visibility": "off" }
+          ]
+        },{
+          "featureType": "administrative.locality",
+          "elementType": "labels",
+          "stylers": [
+            { "visibility": "off" }
+          ]
+        },{
+          "stylers": [
+            { "saturation": -100 }
+          ]
+        },{
+          "featureType": "road"  },{
+          "featureType": "water",
+          "stylers": [
+            { "lightness": 60 }
+          ]
+        },{
+          "featureType": "road.highway",
+          "stylers": [
+            { "visibility": "on" },
+            { "lightness": 45 }
+          ]
+        },{
+          "featureType": "administrative.neighborhood",
+          "stylers": [
+            { "visibility": "off" }
+          ]
+        },{
+          "featureType": "road",
+          "elementType": "labels",
+          "stylers": [
+            { "visibility": "on" },
+            { "lightness": 43 }
+          ]
+        }
+      ];
 
     var mapOptions = {
       zoom: 10,
@@ -20,7 +69,8 @@
       zoomControlOptions: {
         style: google.maps.ZoomControlStyle.LARGE,
         position: google.maps.ControlPosition.LEFT_CENTER
-      }
+      },
+      styles: styleCharityMap
     };
 
     var map = new google.maps.Map(document.getElementById("map-canvas"),
@@ -39,16 +89,23 @@
     var <%= "myLatlng#{marker.id}" %> = new google.maps.LatLng(<%= marker.latitude %>, <%= marker.longitude %>);
     
       <% if marker.id%2 == 0  %>
-      var <%= "content#{marker.id}" %> = '<%= escape_javascript(render "layouts/info_window/waiting_for_adopt") %>';
+        var <%= "content#{marker.id}" %> = '<%= escape_javascript(render "layouts/info_window/waiting_for_adopt") %>';
+
+        var <%= "marker#{marker.id}" %> = new google.maps.Marker({
+          position: <%= "myLatlng#{marker.id}" %>,
+          map: map,
+          icon: '<%= image_path("fire-hydrant-unadopted.png") %>'
+        });
+
       <% else  %>
-      var <%= "content#{marker.id}" %> = '<%= escape_javascript(render "layouts/info_window/already_adopted") %>';
+        var <%= "content#{marker.id}" %> = '<%= escape_javascript(render "layouts/info_window/already_adopted") %>';
+
+        var <%= "marker#{marker.id}" %> = new google.maps.Marker({
+          position: <%= "myLatlng#{marker.id}" %>,
+          map: map,
+          icon: '<%= image_path("fire-hydrant-adopted.png") %>'
+        });
       <% end  %>
-
-      var <%= "marker#{marker.id}" %> = new google.maps.Marker({
-        position: <%= "myLatlng#{marker.id}" %>,
-        map: map
-      });
-
 
     google.maps.event.addListener(<%= "marker#{marker.id}" %>, 'click', function() {
       infowindow.close();
