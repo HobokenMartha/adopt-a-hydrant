@@ -32,55 +32,18 @@
 
     var marker = new google.maps.Marker({
       position: myLatlng,
-      map: map,
-      icon: '<%= image_path("map/green_school.jpg") %>',
+      map: map
     });
 
   <% markers.each do |marker| %>
     var <%= "myLatlng#{marker.id}" %> = new google.maps.LatLng(<%= marker.latitude %>, <%= marker.longitude %>);
     
-    <% if marker.status == "AVAILABLE"  %>
-      <% if marker.donations.empty? %>
-        var <%= "content#{marker.id}" %> = '<div class=\"infowindow\">'+
-      '<%= escape_javascript(render "dashboard/school_information", :school => marker) %><br/>'+
-      '<p class=\"pull-right\"><%= escape_javascript(link_to "Select", dashboard_select_school_path(:school_id => marker.id), class: "submitSchool bttn", :onclick => '$(".submitSchool").hide().parent().append("SELECTED");', remote: :true) %></p></div>';
+        var <%= "content#{marker.id}" %> = 'HALLO';
 
       var <%= "marker#{marker.id}" %> = new google.maps.Marker({
         position: <%= "myLatlng#{marker.id}" %>,
-        map: map,
-        icon: '<%= image_path("map/green_school.jpg") %>'
+        map: map
       });
-      <% else  %>
-        var <%= "content#{marker.id}" %> = '<div class=\"infowindow\">'+
-          '<%= escape_javascript(render "dashboard/school_information", :school => marker) %><br/>Some heros are proceeding with the checkout.</div>';
-
-          var <%= "marker#{marker.id}" %> = new google.maps.Marker({
-            position: <%= "myLatlng#{marker.id}" %>,
-            map: map,
-            icon: '<%= image_path("map/yellow_school.jpg") %>'
-          });      
-      <% end  %>
-    <% else %>
-      <% if marker.status == "PENDING"  %>
-        var <%= "content#{marker.id}" %> = '<div class=\"infowindow\">'+
-          '<%= escape_javascript(render "dashboard/school_information", :school => marker) %><br/>You marked this school as pending.</div>';
-
-          var <%= "marker#{marker.id}" %> = new google.maps.Marker({
-            position: <%= "myLatlng#{marker.id}" %>,
-            map: map,
-            icon: '<%= image_path("map/yellow_school.jpg") %>'
-          });
-      <% else %>
-        var <%= "content#{marker.id}" %> = '<div class=\"infowindow\">'+
-          '<%= escape_javascript(render "dashboard/school_information", :school => marker) %></div>';
-
-          var <%= "marker#{marker.id}" %> = new google.maps.Marker({
-            position: <%= "myLatlng#{marker.id}" %>,
-            map: map,
-            icon: '<%= image_path("map/red_school.jpg") %>'
-          });
-      <% end  %>
-    <% end  %>
 
 
     google.maps.event.addListener(<%= "marker#{marker.id}" %>, 'click', function() {
